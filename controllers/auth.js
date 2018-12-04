@@ -10,11 +10,16 @@ module.exports = (app) => {
 
     // TODO: Double check password
     app.post('/signup', (req, res) => {
+      if (req.body.admin) req.body.admin = true;
+
         const user = new User(req.body);
+
+
         user.save().then((user) => {
             const token = jwt.sign({
                 _id: user._id,
-                username: user.username
+                username: user.username,
+                admin: user.admin,
             }, process.env.HASH_SECRET, {
                 expiresIn: "60 days"
             });

@@ -22,6 +22,11 @@ const UserSchema = new Schema({
         required: true,
         select: false,
     },
+    admin: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
     following: [{
         type: Schema.Types.ObjectId,
         required: false,

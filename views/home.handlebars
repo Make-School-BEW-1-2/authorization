@@ -1,43 +1,47 @@
 <header>
-    <div class="account">
-        {{#if currentUser}}
-            <a href="/user/{{currentUser.username}}">View Profile</a>
-            •
-            <a href="/logout">Logout</a>
-        {{else}}
-            <a href="/login">Login</a>
-            •
-            <a href="/signup">Sign Up</a>
-        {{/if}}
-    </div>
+  <div class="account">
+    {{#if currentUser}}
+      <a href="/user/{{currentUser.username}}">View Profile</a>
+      •
+      <a href="/logout">Logout</a>
+    {{else}}
+      <a href="/login">Login</a>
+      •
+      <a href="/signup">Sign Up</a>
+    {{/if}}
+    {{#if currentUser.admin}}
+      •
+      <a href="/admin">Admin</a>
+    {{/if}}
+  </div>
 
-    <h1 class="greating">What's Playing</h1>
-    <div class="tab-container">
-        <button data-num="1" class="me-tab tab">
-            Me
-        </button>
-        <button data-num="2" class="following-tab tab">
-            Following
-        </button>
-        <button data-num="3" class="global-tab tab">
-            Global
-        </button>
-        <div data-active="2" class="active-tab"></div>
-    </div>
+  <h1 class="greating">What's Playing</h1>
+  <div class="tab-container">
+    <button data-num="1" class="me-tab tab">
+      Me
+    </button>
+    <button data-num="2" class="following-tab tab">
+      Following
+    </button>
+    <button data-num="3" class="global-tab tab">
+      Global
+    </button>
+    <div data-active="2" class="active-tab"></div>
+  </div>
 </header>
 <div class="feed-container">
-    <div class="personal-feed feed">
-        {{> search}}
-        {{> feed songs=personalSongs}}
-    </div>
+  <div class="personal-feed feed">
+    {{> search}}
+    {{> feed songs=personalSongs}}
+  </div>
 
-    <div class="following-feed feed">
-        {{> search}}
-        {{> feed songs=followingSongs}}
-    </div>
+  <div class="following-feed feed">
+    {{> search}}
+    {{> feed songs=followingSongs}}
+  </div>
 
-    <div class="global-feed feed">
-        {{> search}}
-        {{> feed songs=globalSongs}}
-    </div>
+  <div class="global-feed feed">
+    {{> search}}
+    {{> feed songs=globalSongs}}
+  </div>
 </div>
